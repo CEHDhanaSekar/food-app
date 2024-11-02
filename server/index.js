@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const dbConnection = require('./config/dbConnection');
 const cors = require('cors');
-const expressSession = require('express-session')
 const cookieParser = require('cookie-parser');
 const foodRouter = require('./routes/foodRoute');
 const userRouter = require('./routes/userRoute');
@@ -17,8 +16,15 @@ dbConnection();
 
 const allowedOrigins = [process.env.ALLOWED_ORIGIN_1,process.env.ALLOWED_ORIGIN_2]; // Adjust this based on your frontend app's URL
 
-app.use(cors({
-  origin: function (origin, callback) {
+app.use((req, res, next) => {
+  if (!req.headers.origin) {
+    // Allow requests without Origin header to proceed
+    return next();
+  }
+
+  // Apply CORS for requests with Origin header
+  cors({
+    origin: function (origin, callback) {
       if (!origin) {
         callback(new Error('No origin header, request blocked'));
       } else if (allowedOrigins.indexOf(origin) !== -1) {
@@ -27,18 +33,10 @@ app.use(cors({
         callback(new Error('Not allowed by CORS'));
       }
     },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific methods
-  credentials: true, // Allow cookies and credentials to be sent
-  allowedHeaders: ['Content-Type', 'Authorization', 'token'],
-}))
-
-app.use(
-  expressSession({
-    secret: "mealmate",
-    express: { maxAge: 500000 },
-    saveUninitialized: false,
-  })
-);
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+  })(req, res, next);
+});
 app.use(cookieParser());
 app.use(express.json());
 
