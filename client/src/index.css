@@ -31,11 +31,16 @@
 body{
   overflow-x: hidden;
   padding-top: 64px;
+  width : 100vw;
   scrollbar-base-color: #888;
   scrollbar-track-color: #f1f1f1;
   scrollbar-face-color: #888;
   scrollbar-width: thin;
   font-family: 'Ubuntu';
+}
+
+#root{
+  width : 100%;
 }
 
 .particle-bg{

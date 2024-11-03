@@ -160,7 +160,7 @@ export const foodCategories = [
 export const socialLinks = [
     {
         icon : "fa-brands fa-github",
-        url : "https://github.com/CEHDhanaSekar"
+        url : "https://github.com/CEHDhanaSekar/food-app"
     },
     {
         icon : "fa-brands fa-linkedin",
