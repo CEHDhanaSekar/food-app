@@ -8,7 +8,7 @@ export const StoreContext = createContext(null)
 
 function StoredContext(props) {
   
-  const backendUrl = "http://localhost:3000";
+  const backendUrl = "https://food-app-server-0qc2.onrender.com";
   const [foodItems, setFoodItems] = useState([]);
   const [orders, setOrders] = useState([]);
   const [activeLink, setActiveLink] = useState('');

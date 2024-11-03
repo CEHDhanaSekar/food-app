@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import './app.css'
+import './App.css'
 import Sidebar from "./components/Sidebar"
 import ListItems from "./components/ListItems"
 import StoredContext from "./context/StoredContext"
