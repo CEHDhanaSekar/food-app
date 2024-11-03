@@ -44,8 +44,8 @@ export default function ListItems() {
         <p>{food.description}</p>
         <div className="my-1 flex justify-center">
           <select name="availability" id="availability" className="bg-blue-800 p-1 font-semibold text-white" value={available} onChange={(e) => onChangeHandler(e,food._id)}>
-            <option value={food.availability}>Available</option>
-            <option value={false}>Not Available</option>
+            <option value={food.availability}>{food.availability ? 'Available' : 'Not Available'}</option>
+            <option value={!food.availability}>{food.availability ? 'Available' : 'Not Available'}</option>
           </select>
         </div>
       </div>

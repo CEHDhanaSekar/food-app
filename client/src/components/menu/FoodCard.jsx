@@ -42,7 +42,7 @@ const FoodCard = React.memo(({e,i}) => {
 
     return (
       <>
-      <motion.div className="food-card sm:w-52"
+      <motion.div className="food-card sm:w-52 relative"
         initial={{opacity : 0, y : -20}} animate={{opacity : 1, y : 0}} transition={{duration : .5, delay : i * 0.1}}
       >
         <div className="img relative">
@@ -68,6 +68,7 @@ const FoodCard = React.memo(({e,i}) => {
           }
         </div>
         <p className="card-des">{e.quantity > 1 ? e.description + ". pack of " + e.quantity + " " + e.title : e.description}</p>
+        {!e.availability && <div className="cuttern absolute w-full h-full z-10">Not Available now</div>}
       </motion.div>
       </>
     )
